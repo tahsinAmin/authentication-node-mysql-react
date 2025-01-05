@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 // import db from "./config/database.js"
 import UserRoute from "./routes/userRoute.js"
 import ProductRoute from "./routes/productRoute.js"
+import AuthRoute from "./routes/authRoute.js"
 dotenv.config();
 
 const app = express();
@@ -30,6 +31,7 @@ app.use(cors({
 
 app.use(express.json())
 app.use(UserRoute)
+app.use(AuthRoute)
 app.use(ProductRoute)
 
 app.listen(process.env.APP_PORT, () => {

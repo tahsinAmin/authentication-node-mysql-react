@@ -36,3 +36,21 @@ Content-Type: application/json
 ###
 # Delete a user
 DELETE http://localhost:5000/users/b5d2e24e-1d97-4757-836d-df019dcf8f7c
+
+###
+# Login a user
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email":"john2@gmail.com",
+    "password":"12345"
+}
+
+###
+# Get User theough session check
+GET http://localhost:5000/me
+
+###
+# Logout
+DELETE http://localhost:5000/logout
