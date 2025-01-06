@@ -3,8 +3,8 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "John Doe 2",
-    "email": "john2@gmail.com",
+    "name": "John Doe 3",
+    "email": "john3@gmail.com",
     "password": "12345",
     "confPassword": "12345",
     "role": "user"
@@ -48,7 +48,17 @@ Content-Type: application/json
 }
 
 ###
-# Get User theough session check
+# Login as an admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email":"admin@gmail.com",
+    "password":"12345"
+}
+
+###
+# Get User through session check
 GET http://localhost:5000/me
 
 ###
