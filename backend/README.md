@@ -5,3 +5,8 @@
     "confPassword": "12345",
     "role": "admin"
 } -->
+
+# Debug
+- API
+    - check if trailiong comma present in json body
+
