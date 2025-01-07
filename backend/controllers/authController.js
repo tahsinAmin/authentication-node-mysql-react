@@ -7,7 +7,7 @@ export const Login = async(req, res) => {
             email: req.body.email
         }
     });
-    if (!user)  res.status(404).json({msg: "User doesn't exist"});
+    if (!user) return res.status(404).json({msg: "User doesn't exist"});
 
     const match = await argon2.verify(user.password, req.body.password);
 
@@ -32,7 +32,7 @@ export const Me = async (req, res) => {
             uuid: req.session.userId
         }
     });
-    if (!user) res.status(404).json({msg: "User doesn't exist"});
+    if (!user) return res.status(404).json({msg: "User doesn't exist"});
     res.status(200).json(user);
 }
 

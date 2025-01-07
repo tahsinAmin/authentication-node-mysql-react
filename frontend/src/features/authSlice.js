@@ -11,7 +11,7 @@ const initialState = {
 
 export const LoginUser = createAsyncThunk("user/loginUser", async(user, thunkAPI) => {
     try {
-        const response = await axios.post('http:/localhost:5000/login', {
+        const response = await axios.post('http://localhost:5000/login', {
             email:user.email,
             password: user.password
         });
@@ -42,7 +42,7 @@ export const authSlice = createSlice({
         builder.addCase(LoginUser.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
-            state.messagex1 = action.payload;
+            state.message = action.payload;
         })
     }
 });
