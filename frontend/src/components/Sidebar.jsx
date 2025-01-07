@@ -27,12 +27,17 @@ export const Sidebar = () => {
             <NavLink to={"/products"}><IoPricetag/> Products</NavLink>
           </li>
         </ul>
-        <p className="menu-label">Admin</p>
-        <ul className="menu-list">
-          <li>
-            <NavLink to={"/users"}><IoPerson/> Users</NavLink>
-          </li>
-        </ul>
+        {user && user.role === "admin" && (
+          <>
+            <p className="menu-label">Admin</p>
+            <ul className="menu-list">
+              <li>
+                <NavLink to={"/users"}><IoPerson/> Users</NavLink>
+              </li>
+            </ul>
+          </>
+        )}
+        
         <p className="menu-label">Settings</p>
         <ul className="menu-list">
           <li>
