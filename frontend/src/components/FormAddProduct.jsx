@@ -49,7 +49,7 @@ export const FormAddProduct = () => {
                    
                     <div className="field">
                         <div className="control">
-                        <button className='button is-success'>Save</button>
+                            <button type='submit' className='button is-success'>Save</button>
                         </div>
                     </div>
                 </form>
