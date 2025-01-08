@@ -64,7 +64,7 @@ export const FormEditProduct = () => {
                     
                         <div className="field">
                             <div className="control">
-                            <button type='submit' className='button is-success'>Update</button>
+                                <button type='submit' className='button is-success'>Update</button>
                             </div>
                         </div>
                     </form>

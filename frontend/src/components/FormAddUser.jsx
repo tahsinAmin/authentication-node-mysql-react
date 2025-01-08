@@ -38,49 +38,49 @@ export const FormAddUser = () => {
         <div className="card is-shadowless">
             <div className="card-content">
                 <div className="content">
-                <form onSubmit={saveUser}>
-                <p className="has-text-centered">{msg}</p>
-                <div className="field">
-                        <label className='label'>Name</label>
-                        <div className="control">
-                            <input value={name} onChange={(e) => setName(e.target.value)} type="text" className="input" placeholder='Name'/>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <label className='label'>Email</label>
-                        <div className="control">
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="input" placeholder='email'/>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <label className='label'>Password</label>
-                        <div className="control">
-                            <input value={password} onChange={(e) => setPassword(e.target.value)}  type="password" className="input" placeholder='*****'/>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <label className='label'>Confirm Password</label>
-                        <div className="control">
-                            <input value={confPassword} onChange={(e) => setConfPassword(e.target.value)} type="password" className="input" placeholder='*****'/>
-                        </div>
-                    </div>
-                    <div className="field">
-                        <label className='label'>Role</label>
-                        <div className="control">
-                            <div className="select is-fullwidth">
-                                <select value={role} onChange={(e) => setRole(e.target.value)}  name="" id="">
-                                    <option value="admin">Admin</option>
-                                    <option value="user">User</option>
-                                </select>
+                    <form onSubmit={saveUser}>
+                        <p className="has-text-centered">{msg}</p>
+                        <div className="field">
+                            <label className='label'>Name</label>
+                            <div className="control">
+                                <input value={name} onChange={(e) => setName(e.target.value)} type="text" className="input" placeholder='Name'/>
                             </div>
                         </div>
-                    </div>
-                    <div className="field">
-                        <div className="control">
-                            <button type='submit' className='button is-success'>Save</button>
+                        <div className="field">
+                            <label className='label'>Email</label>
+                            <div className="control">
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="input" placeholder='email'/>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                        <div className="field">
+                            <label className='label'>Password</label>
+                            <div className="control">
+                                <input value={password} onChange={(e) => setPassword(e.target.value)}  type="password" className="input" placeholder='*****'/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <label className='label'>Confirm Password</label>
+                            <div className="control">
+                                <input value={confPassword} onChange={(e) => setConfPassword(e.target.value)} type="password" className="input" placeholder='*****'/>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <label className='label'>Role</label>
+                            <div className="control">
+                                <div className="select is-fullwidth">
+                                    <select value={role} onChange={(e) => setRole(e.target.value)}  name="" id="">
+                                        <option value="admin">Admin</option>
+                                        <option value="user">User</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="control">
+                                <button type='submit' className='button is-success'>Save</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

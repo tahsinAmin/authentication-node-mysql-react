@@ -43,7 +43,7 @@ export const Login = () => {
                     <div className="field">
                         <label className='label'>Email</label>
                         <div className="control">
-                            <input type="text" className="input" value={email} onChange={(e) => setEmail( e.target.value)} placeholder='email'/>
+                            <input type="text" className="input" value={email} onChange={(e) => setEmail( e.target.value)} placeholder='Email'/>
                         </div>
                     </div>
                     <div className="field">
