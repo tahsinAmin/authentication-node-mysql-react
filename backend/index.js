@@ -23,6 +23,8 @@ const store  = new sessionStore({
 //     await db.sync();
 // })();
 
+// db.sync();
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,

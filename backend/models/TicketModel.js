@@ -30,6 +30,14 @@ const Tickets = db.define('tickets', {
             len: [3,255]
         }
     },
+    status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: true,
+            len: [3,10]
+        }
+    },
     assigned: {
         type: DataTypes.STRING,
         allowNull: false,

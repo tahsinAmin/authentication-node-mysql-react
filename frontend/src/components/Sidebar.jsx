@@ -23,8 +23,11 @@ export const Sidebar = () => {
           <li>
             <NavLink to={"/dashboard"}> <IoHome/> Dashboard</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to={"/products"}><IoPricetag/> Products</NavLink>
+          </li> */}
+          <li>
+            <NavLink to={"/tickets"}><IoPricetag/> Tickets</NavLink>
           </li>
         </ul>
         {user && user.role === "admin" && (

@@ -7,7 +7,7 @@ export const getTickets = async(req, res) => {
         let response;
         if (req.role === "admin") {
             response = await Tickets.findAll({
-                attributes: ['uuid','subject','description', 'reply'],
+                attributes: ['uuid','subject','description', 'status', 'reply'],
                 include: [{
                     model: Users,
                     attributes: ['name','email']
@@ -15,7 +15,7 @@ export const getTickets = async(req, res) => {
             });
         } else {
             response = await Tickets.findAll({
-                attributes: ['uuid','subject','description', 'reply'],
+                attributes: ['uuid','subject','description', 'status', 'reply'],
                 where: {
                     userId: req.userId
                 },
@@ -46,7 +46,7 @@ export const getTicketById = async(req, res) => {
         let response;
         if (req.role === "admin") {
             response = await Tickets.findOne({
-                attributes: ['uuid','subject','description', 'reply'],
+                attributes: ['uuid','subject','description', 'status', 'reply'],
                 where: {
                     id: ticket.id
                 },
@@ -57,7 +57,7 @@ export const getTicketById = async(req, res) => {
             });
         } else {
             response = await Tickets.findOne({
-                attributes: ['uuid','subject','description', 'reply'],
+                attributes: ['uuid','subject','description', 'status', 'reply'],
                 where: {
                     [Op.and]:[{id: ticket.id}, {userId: req.userId}]
                 },
@@ -82,6 +82,7 @@ export const createTicket = async(req, res) => {
         await Tickets.create({
             subject: subject,
             description: description,
+            status: 'open',
             assigned: 'admin',
             reply: "",
             userId: req.userId
@@ -104,9 +105,9 @@ export const updateTicket = async(req, res) => {
         console.log("\n\n\n ticket =", ticket);
         if(!ticket) return res.status(404).json({msg: "Data not found"});
 
-        const {subject, description, assigned, reply} = req.body;
+        const {subject, description, assigned, status, reply} = req.body;
         if (req.role === "admin") {
-            await Tickets.update({subject, description, assigned, reply}, {
+            await Tickets.update({subject, description, assigned, status, reply}, {
                 where: {
                     id: ticket.id
                 }
