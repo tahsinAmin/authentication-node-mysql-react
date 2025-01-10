@@ -94,7 +94,7 @@ export const createTicket = async(req, res) => {
 }
 
 export const updateTicket = async(req, res) => {
-    console.log("\n\n\n Inside getTicketById");
+    console.log("\n\n\n Inside updateTicket");
     
     try {
         const ticket = await Tickets.findOne({

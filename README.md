@@ -4,8 +4,10 @@
 - [x] admin can reply to post.
 - [x] User can see reply
 - [x] Admin will reply and resolve not, edit and delete
-- [] if resovled, check iccon won't be there.
+- [x] if resovled, Check, delete & reply controls will not show for admin
 - [] admin gets a notification that there's a new ticket.
+- [x] Show Open, closed, and all tabs for users
+- [] Tag https://bulma.io/documentation/elements/tag/
 - [] How to setup.
 - [] Show user name in navbar
 - [] Base path from .env

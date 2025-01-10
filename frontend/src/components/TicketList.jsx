@@ -1,46 +1,79 @@
-import React, {useState, useEffect} from 'react'
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { IoCheckmark, IoPencil, IoTrash} from "react-icons/io5";
-import { useSelector } from 'react-redux';
+import { IoCheckmark, IoPencil, IoTrash } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 const TicketList = () => {
-    const [tickets, setTickets] = useState([]);
-    const {user} = useSelector((state) => state.auth);
+  const [tickets, setTickets] = useState([]);
+  const { user } = useSelector((state) => state.auth);
+  const { status } = useParams();
+  console.log("\n\n\nstatus =", status);
+  useEffect(() => {
+    getTickets();
+  });
 
-    useEffect(() => {
-        getTickets();
-    }, []);
-    
-    const getTickets = async () => {
-        const response = await axios.get('http://localhost:5000/tickets');
-        setTickets(response.data);
-    }
+  const getTickets = async () => {
+    const response = await axios.get("http://localhost:5000/tickets");
+    const filteredPlans = status
+      ? response.data.filter((ticket) => ticket.status === status)
+      : response.data;
 
-    const deleteTicket = async (ticketId) => {
-        await axios.delete(`http://localhost:5000/tickets/${ticketId}`);
-        getTickets();
-    }
+    setTickets(filteredPlans);
+  };
 
-    const resolveTicket = async (productId) => {
-      try {
-        await axios.patch(`http://localhost:5000/tickets/${productId}`, {
-          status: "resolved"
-        });
-      } catch (error) {
-        if (error.response) {
-          console.log("Error =", error);
-          
-        }
+  const deleteTicket = async (ticketId) => {
+    await axios.delete(`http://localhost:5000/tickets/${ticketId}`);
+    getTickets();
+  };
+
+  const resolveTicket = async (productId) => {
+    try {
+      await axios.patch(`http://localhost:5000/tickets/${productId}`, {
+        status: "resolved",
+      });
+    } catch (error) {
+      if (error.response) {
+        console.log("Error =", error);
       }
-
-      getTickets();
     }
+
+    getTickets();
+  };
 
   return (
     <div>
       <h1 className="title">Tickets</h1>
       <h2 className="subtitle">List of Tickets</h2>
+
+      {/* <div className="notification is-link">
+        <button className="delete" onClick={dele}></button>
+        Ticket has been <strong>RESOLVED</strong>!
+      </div> */}
+
+      <div className="tabs is-toggle is-toggle-rounded">
+        <ul>
+          <li className={`${status === undefined ? "is-active": ""}`}>
+            <a href="/tickets">
+              <span className="icon is-small"><i className="fas fa-image"></i></span>
+              <span>All</span>
+            </a>
+          </li>
+          <li className={`${status === "open" ? "is-active": ""}`}>
+            <a href="/tickets/open">
+              <span className="icon is-small"><i className="fas fa-music"></i></span>
+              <span>Open</span>
+            </a>
+          </li>
+          
+          <li className={`${status === "resolved" ? "is-active": ""}`}>
+            <a href="/tickets/resolved">
+              <span className="icon is-small"><i className="fas fa-file-alt"></i></span>
+              <span>Resolved</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
       {tickets.map((ticket, index) => (
         <div className="box" key={index}>
@@ -59,52 +92,46 @@ const TicketList = () => {
             </div>
             <div>
               <div>{ticket.status}</div>
-                
-                {user && user.role === "admin" ? (
-                  <div>
 
-                      <span class="icon is-large has-text-info">
-                        <button onClick={() => resolveTicket(ticket.uuid)}><IoCheckmark/></button>
+              {user && user.role === "admin" ? (
+                <div>
+                  {ticket.status !== "resolved" && (
+                    <>
+                      <span className="icon is-large has-text-info">
+                        <button onClick={() => resolveTicket(ticket.uuid)}>
+                          <IoCheckmark />
+                        </button>
                       </span>
-                      <span class="icon has-text-success">
-                          <button
-                              onClick={() => deleteTicket(ticket.uuid)}
-                          >
-                              <IoTrash/>
-                          </button>
+                      <span className="icon has-text-success">
+                        <button onClick={() => deleteTicket(ticket.uuid)}>
+                          <IoTrash />
+                        </button>
                       </span>
-                      <span class="ml-2">
-                          <Link
-                              to={`/tickets/edit/${ticket.uuid}`}
-                          >
-                              Reply
-                          </Link>
+                      <span className="ml-2">
+                        <Link to={`/tickets/edit/${ticket.uuid}`}>Reply</Link>
                       </span>
-                  </div>
-                ) : (
-                  <div>
-                      <span class="icon has-text-info">
-                          <Link
-                              to={`/tickets/edit/${ticket.uuid}`}
-                          >
-                              <IoPencil/>
-                          </Link>
-                      </span>
-                      <span class="icon has-text-success">
-                          <button
-                              onClick={() => deleteTicket(ticket.uuid)}
-                          >
-                              <IoTrash/>
-                          </button>
-                      </span>
-                  </div>
-                )}
+                    </>
+                  )}
+                </div>
+              ) : (
+                <div>
+                  <span className="icon has-text-info">
+                    <Link to={`/tickets/edit/${ticket.uuid}`}>
+                      <IoPencil />
+                    </Link>
+                  </span>
+                  <span className="icon has-text-success">
+                    <button onClick={() => deleteTicket(ticket.uuid)}>
+                      <IoTrash />
+                    </button>
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>
       ))}
 
-     
       {/* <table className="table is-striped is-fullwidth">
         <thead>
           <tr>
@@ -144,6 +171,6 @@ const TicketList = () => {
       </table> */}
     </div>
   );
-}
+};
 
 export default TicketList;
