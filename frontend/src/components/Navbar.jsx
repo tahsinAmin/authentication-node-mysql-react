@@ -49,6 +49,7 @@ export const Navbar = () => {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
+                {user && user.name}
                 <button onClick={logout} className="button is-light">
                   Log out
                 </button>

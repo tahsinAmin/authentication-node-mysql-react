@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IoPerson, IoPricetag, IoHome, IoLogOut, IoAdd} from "react-icons/io5";
 
 import { useDispatch, useSelector} from "react-redux";
 import { LogOut, reset } from "../features/authSlice";
+import axios from "axios";
 
 export const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {user} = useSelector((state) => state.auth);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const getTicketsCount = async (u) => {
+      const response = await axios.get("http://localhost:5000/tickets");
+      const num = user
+        ? response.data.filter((ticket) => ticket.assigned === u.role).length
+        : response.data.length;
+        setCount(num);
+    };
+
+    getTicketsCount(user);
+  }, [user]); 
 
   const logout= () => {
     dispatch(LogOut());
@@ -27,7 +41,9 @@ export const Sidebar = () => {
             <NavLink to={"/products"}><IoPricetag/> Products</NavLink>
           </li> */}
           <li>
-            <NavLink to={"/tickets"}><IoPricetag/> Tickets</NavLink>
+            <NavLink to={"/tickets/open"}><IoPricetag/> Tickets 
+              <span class="tag is-primary"> {count} </span>
+            </NavLink>
           </li>
         </ul>
         {user && user.role === "admin" ? (

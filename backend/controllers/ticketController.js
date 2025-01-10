@@ -7,7 +7,7 @@ export const getTickets = async(req, res) => {
         let response;
         if (req.role === "admin") {
             response = await Tickets.findAll({
-                attributes: ['uuid','subject','description', 'status', 'reply'],
+                attributes: ['uuid','subject','description', 'status', 'reply', 'assigned'],
                 include: [{
                     model: Users,
                     attributes: ['name','email']
@@ -15,7 +15,7 @@ export const getTickets = async(req, res) => {
             });
         } else {
             response = await Tickets.findAll({
-                attributes: ['uuid','subject','description', 'status', 'reply'],
+                attributes: ['uuid','subject','description', 'status', 'reply', 'assigned'],
                 where: {
                     userId: req.userId
                 },

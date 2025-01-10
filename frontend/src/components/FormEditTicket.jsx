@@ -33,7 +33,7 @@ export const FormEditTicket = () => {
               subject: subject,
               description:description
             })
-            navigate("/tickets")
+            navigate("/tickets/open");
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg)

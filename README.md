@@ -5,11 +5,11 @@
 - [x] User can see reply
 - [x] Admin will reply and resolve not, edit and delete
 - [x] if resovled, Check, delete & reply controls will not show for admin
-- [] admin gets a notification that there's a new ticket.
+- [x] admin & user gets a notification that there's a change in the ticket List.
 - [x] Show Open, closed, and all tabs for users
-- [] Tag https://bulma.io/documentation/elements/tag/
+- [x] Tag https://bulma.io/documentation/elements/tag/
 - [] How to setup.
-- [] Show user name in navbar
+- [x] Show user name in navbar
 - [] Base path from .env
 - [] Toast
 
