@@ -1,5 +1,27 @@
-- [x] ticket like product
-- [x] status, subject, description, assignedTo, reply 
+# Video
+
+Source: [Coming Soon]
+
+# How To Setup
+
+## Frontend
+
+- go to frontend folder and run
+  `npm i`
+- Start the project
+  `npm start`
+
+## Backend
+
+- Install Xampp and start the Apache and Mysql Action.
+- go to backend folder `cd backend`
+- 3. Go to inde.js file and uncomment "// db.sync();" at line 26.
+- run `nodemon index.js`
+- [Database is created. ]
+- Comment that STEP 3, terminate the terminal and run `nodemon index.js` again.
+- Install VSCode extension, "REST Client" by Huachao Mao
+
+- [x] status, subject, description, assignedTo, reply
 - [x] status that can be changed only by admin
 - [x] admin can reply to post.
 - [x] User can see reply
@@ -13,23 +35,3 @@
 - [] Base path from .env
 - [] Toast
 
-
-Deliverables
-A GitHub repository containing:
-The full source code of the app.
-Instructions for setting up and running the app locally.
-A short video (optional) demonstrating the app's functionality.
-
-
-- user role - customer, executives, admin
-- Bonus Points
-Adding filters or search functionality for tickets (e.g., by status, assigned executive, etc.).
-Including registration functionality with role assignment.
-- notification 
-- Check after every 1 minute, whether there's a change in complaints
-
-
-- An authentication system (ex: Remix's authentication) handles user login.
-- Registration functionality is optional but can be implemented for bonus points.
-
-Header = Complain center, Open a new ticket, check ticket status
