@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { IoPerson, IoPricetag, IoHome, IoLogOut} from "react-icons/io5";
+import { IoPerson, IoPricetag, IoHome, IoLogOut, IoAdd} from "react-icons/io5";
 
 import { useDispatch, useSelector} from "react-redux";
 import { LogOut, reset } from "../features/authSlice";
@@ -8,7 +8,7 @@ import { LogOut, reset } from "../features/authSlice";
 export const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {user} = useSelector((state) => state.auth)
+  const {user} = useSelector((state) => state.auth);
 
   const logout= () => {
     dispatch(LogOut());
@@ -30,7 +30,7 @@ export const Sidebar = () => {
             <NavLink to={"/tickets"}><IoPricetag/> Tickets</NavLink>
           </li>
         </ul>
-        {user && user.role === "admin" && (
+        {user && user.role === "admin" ? (
           <>
             <p className="menu-label">Admin</p>
             <ul className="menu-list">
@@ -39,6 +39,15 @@ export const Sidebar = () => {
               </li>
             </ul>
           </>
+        ): (
+          <>
+          {/* <p className="menu-label">{user.name}</p> */}
+          <ul className="menu-list">
+            <li>
+              <NavLink to={"/tickets/add"}><IoAdd/> Add New</NavLink>
+            </li>
+          </ul>
+        </>
         )}
         
         <p className="menu-label">Settings</p>

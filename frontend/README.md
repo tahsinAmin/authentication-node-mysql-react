@@ -1,3 +1,7 @@
+admin@gmail.com
+
+john2@gmail.com
+
 [] Double submit, so need to disable when action pending. 
 ``
 # Getting Started with Create React App and Redux
