@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 import db from "./config/database.js"
 import SequelizeStore from "connect-session-sequelize"
 import UserRoute from "./routes/userRoute.js"
-import ProductRoute from "./routes/productRoute.js"
 import AuthRoute from "./routes/authRoute.js"
 import TicketRoute from "./routes/ticketRoute.js"
 dotenv.config();
@@ -43,7 +42,6 @@ app.use(cors({
 app.use(express.json())
 app.use(UserRoute)
 app.use(AuthRoute)
-app.use(ProductRoute)
 app.use(TicketRoute)
 
 // store.sync()

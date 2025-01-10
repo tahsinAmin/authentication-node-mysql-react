@@ -1,10 +1,23 @@
+# Create a admin
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Bossman",
+    "email":"admin@gmail.com",
+    "password":"12345",
+    "confPassword": "12345",
+    "role": "admin"
+}
+
+###
 # Create a user
 POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "John Doe 3",
-    "email": "john3@gmail.com",
+    "name": "John Doe 2",
+    "email": "john2@gmail.com",
     "password": "12345",
     "confPassword": "12345",
     "role": "user"
@@ -66,39 +79,6 @@ GET http://localhost:5000/me
 DELETE http://localhost:5000/logout
 
 ###
-# get all products
-GET http://localhost:5000/products
-
-###
-# get single products
-GET http://localhost:5000/products/c8f45a34-0b2d-4002-9b2a-a9e9055444eb
-
-###
-# Create a product
-POST http://localhost:5000/products
-Content-Type: application/json
-
-{
-    "name": "Product 2",
-    "price": 200
-}
-
-###
-# Update a product
-PATCH http://localhost:5000/products/6bc94336-1e03-43e4-8e86-63daa0d964c4
-Content-Type: application/json
-
-{
-    "name": "Product Updated",
-    "price": 97493
-}
-
-###
-# Delete a product
-DELETE http://localhost:5000/products/c8f45a34-0b2d-4002-9b2a-a9e9055444eb
-
-
-###
 # get all tickets
 GET http://localhost:5000/tickets
 
@@ -112,8 +92,8 @@ POST http://localhost:5000/tickets
 Content-Type: application/json
 
 {
-    "name": "Product 2",
-    "price": 200
+    "subject": "Test 1",
+    "description": "Test for resolving the ticket",
 }
 
 ###
@@ -122,10 +102,11 @@ PATCH http://localhost:5000/tickets/6bc94336-1e03-43e4-8e86-63daa0d964c4
 Content-Type: application/json
 
 {
-    "name": "Product Updated",
-    "price": 97493
+    "subject": "Test 1 Updated",
+    "description": "Test for resolving the ticket [Updated]",
 }
 
 ###
 # Delete a ticket
-DELETE http://localhost:5000/tickets/c8f45a34-0b2d-4002-9b2a-a9e9055444eb
+# DELETE http://localhost:5000/tickets/c8f45a34-0b2d-4002-9b2a-a9e9055444eb Example
+DELETE http://localhost:5000/tickets/<:ticket's uuid>
