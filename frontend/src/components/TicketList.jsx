@@ -31,6 +31,7 @@ const TicketList = () => {
     try {
       await axios.patch(`http://localhost:5000/tickets/${productId}`, {
         status: "resolved",
+        assigned: "user"
       });
     } catch (error) {
       if (error.response) {
@@ -53,22 +54,19 @@ const TicketList = () => {
 
       <div className="tabs is-toggle is-toggle-rounded">
         <ul>
-          <li className={`${status === undefined ? "is-active": ""}`}>
-            <a href="/tickets">
-              <span className="icon is-small"><i className="fas fa-image"></i></span>
-              <span>All</span>
-            </a>
-          </li>
           <li className={`${status === "open" ? "is-active": ""}`}>
             <a href="/tickets/open">
-              <span className="icon is-small"><i className="fas fa-music"></i></span>
               <span>Open</span>
+            </a>
+          </li>
+          <li className={`${status === undefined ? "is-active": ""}`}>
+            <a href="/tickets">
+              <span>All</span>
             </a>
           </li>
           
           <li className={`${status === "resolved" ? "is-active": ""}`}>
             <a href="/tickets/resolved">
-              <span className="icon is-small"><i className="fas fa-file-alt"></i></span>
               <span>Resolved</span>
             </a>
           </li>
