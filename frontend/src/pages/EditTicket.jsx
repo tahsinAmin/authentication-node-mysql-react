@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getMe } from '../features/authSlice';
 import { FormEditTicket } from '../components/FormEditTicket';
+import { FormControlTicket } from '../components/FormControlTicket';
 
 export const EditTicket = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError } = useSelector((state => state.auth));
-
+  const { user, isError } = useSelector((state => state.auth));
   useEffect(() => {
     dispatch(getMe());
   }, [dispatch]);
@@ -23,7 +23,9 @@ export const EditTicket = () => {
 
   return (
     <Layout>
-        <FormEditTicket/>
+      {user && user.role === "admin" ? (
+        <FormControlTicket/>
+      ): (<FormEditTicket/>) }
     </Layout>
   )
 }
