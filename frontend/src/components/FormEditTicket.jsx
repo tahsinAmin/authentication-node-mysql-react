@@ -50,7 +50,7 @@ export const FormEditTicket = () => {
                     <form onSubmit={updateProduct}>
                         <p className="has-text-centered">{msg}</p>
                         <div className="field">
-                            <label className='label'>Product Name</label>
+                            <label className='label'>Subject</label>
                             <div className="control">
                                 <input value={subject} onChange={(e) => setSubject(e.target.value)} type="text" className="input" placeholder='Ticket Name'/>
                             </div>

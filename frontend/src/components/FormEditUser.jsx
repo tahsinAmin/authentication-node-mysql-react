@@ -84,7 +84,7 @@ export const FormEditUser = () => {
                         <div className="field">
                             <label className='label'>Role</label>
                             <div className="control">
-                                <div className={`select is-fullwidth ${role}`}>
+                                <div className='select is-fullwidth'>
                                     <select value={role} onChange={(e) => setRole(e.target.value)}  name="" id="">
                                         <option value="admin">Admin</option><option value="admin">Admin</option>
                                         <option value="user">User</option>
