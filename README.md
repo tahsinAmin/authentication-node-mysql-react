@@ -1,26 +1,30 @@
-# Video
-
-Source: [Coming Soon]
-
 # How To Setup
 
-## Frontend
-
-- go to frontend folder and run
-  `npm i`
-- Start the project
-  `npm start`
+[Video Source](https://drive.google.com/drive/folders/1-JKe8wQVr-xN6bb3aYfbB560EauGYmtp?usp=sharing)
 
 ## Backend
 
 - Install Xampp and start the Apache and Mysql Action.
+- Create a database, name it "auth_db"
 - go to backend folder `cd backend`
-- 3. Go to inde.js file and uncomment "// db.sync();" at line 26.
+- Rename .env.sample to .env
+- 4. Go to index.js file and uncomment "// db.sync();" at line 25.
 - run `nodemon index.js`
 - [Database is created. ]
-- Comment that STEP 3, terminate the terminal and run `nodemon index.js` again.
+- Comment that STEP 4, terminate the terminal and run `nodemon index.js` again.
 - Install VSCode extension, "REST Client" by Huachao Mao
+- Open request.rest file, you'll see "Send request" written in between line 2 & 3. Click to create admin
 
+
+## Frontend
+- Open a new terminal.
+- go to frontend folder and run
+  `cd frontend`
+  `npm i`
+- Start the project `npm start`. this will open a browswer tab with a login page
+- Login with your admin account. Now, we can create user, and that user can create tickets.
+
+# Todos
 - [x] status, subject, description, assignedTo, reply
 - [x] status that can be changed only by admin
 - [x] admin can reply to post.

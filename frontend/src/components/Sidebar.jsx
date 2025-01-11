@@ -42,7 +42,7 @@ export const Sidebar = () => {
           </li> */}
           <li>
             <NavLink to={"/tickets/open"}><IoPricetag/> Tickets 
-              <span class="tag is-primary"> {count} </span>
+              <span className="tag is-primary"> {count} </span>
             </NavLink>
           </li>
         </ul>
